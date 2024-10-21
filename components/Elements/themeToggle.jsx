@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import { Button } from "../ui/button";
-import { SunDimIcon } from "lucide-react";
+import { SunDimIcon, MoonIcon } from "lucide-react";
 
 const ThemeToggle = () => {
   const { theme, setTheme } = useTheme();
@@ -10,17 +10,17 @@ const ThemeToggle = () => {
 
   useEffect(() => {
     if (theme === "dark") {
-      setIcon(<SunDimIcon />); // Set icon for dark mode
+      setIcon(<SunDimIcon />);
     } else {
-      setIcon(<SunDimIcon />); // Set icon for light mode
+      setIcon(<MoonIcon />);
     }
   }, [theme]);
 
   const toggleTheme = () => {
     if (theme === "dark") {
-      setTheme("light"); // Toggle to light theme
+      setTheme("light");
     } else {
-      setTheme("dark"); // Toggle to dark theme
+      setTheme("dark");
     }
   };
 

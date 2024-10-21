@@ -1,102 +1,62 @@
 "use client";
 
 import * as React from "react";
-import { CalendarIcon, DownloadIcon, BellIcon } from "lucide-react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardHeader,
   CardTitle,
+  CardDescription,
 } from "@/components/ui/card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import ThemeToggle from "@/components/Elements/themeToggle";
-import { Component } from "@/components/Elements/chart";
 import TabChanger from "@/components/Elements/tabs";
-
-const mockData = [
-  {
-    date: "2024-09-01",
-    totalCalls: 75,
-    incomingCalls: 50,
-    outgoingCalls: 25,
-    avgDuration: 120,
-  },
-  {
-    date: "2024-09-02",
-    totalCalls: 80,
-    incomingCalls: 55,
-    outgoingCalls: 25,
-    avgDuration: 130,
-  },
-];
-
-const recentCalls = [
-  {
-    name: "Rishabh Gokhe",
-    number: "9098447696",
-    duration: "5:23",
-    amount: 299.0,
-  },
-  {
-    name: "Rishabh Gokhe",
-    number: "9098447696",
-    duration: "2:45",
-    amount: 39.0,
-  },
-  {
-    name: "Rishabh Gokhe",
-    number: "9098447696",
-    duration: "8:12",
-    amount: 199.0,
-  },
-  {
-    name: "Rishabh Gokhe",
-    number: "9098447696",
-    duration: "1:30",
-    amount: 99.0,
-  },
-  {
-    name: "Rishabh Gokhe",
-    number: "9098447696",
-    duration: "3:58",
-    amount: 39.0,
-  },
-];
-
-const topCallers = [
-  {
-    name: "John Doe",
-    number: "9876543210",
-    totalCalls: 35,
-    totalDuration: "1:45:00",
-  },
-  {
-    name: "Jane Smith",
-    number: "9876543211",
-    totalCalls: 28,
-    totalDuration: "1:25:00",
-  },
-  {
-    name: "David Johnson",
-    number: "9876543212",
-    totalCalls: 22,
-    totalDuration: "1:15:00",
-  },
-];
+import { CalendarIcon, DownloadIcon, BellIcon } from "lucide-react";
+import { Component } from "@/components/Elements/chart";
+import { fetchCSVData } from "@/utils/fetchCSV";
 
 export default function CallLogDashboard() {
-  const totalCalls = mockData.reduce((sum, day) => sum + day.totalCalls, 0);
+  const [mockData, setMockData] = useState([]);
+  const [recentCalls, setRecentCalls] = useState([]);
+
+  useEffect(() => {
+    const loadCSVData = async () => {
+      try {
+        const mockData = await fetchCSVData("/mock_data.csv");
+        const recentCalls = await fetchCSVData("/recent_calls.csv");
+        setMockData(mockData);
+        setRecentCalls(recentCalls);
+      } catch (error) {
+        console.error("Error loading CSV data:", error);
+      }
+    };
+    loadCSVData();
+  }, []);
+
+  const totalCalls = mockData.length;
+  console.log(mockData);
+  console.log(recentCalls);
+
+  const convertDurationToMinutes = (duration) => {
+    const [minutes, seconds] = duration.split(":").map(Number);
+    return minutes + seconds / 60;
+  };
+  const recentCallDurations = recentCalls.map((call) =>
+    convertDurationToMinutes(call.duration)
+  );
   const avgDuration =
-    mockData.reduce((sum, day) => sum + day.avgDuration, 0) / mockData.length;
+    recentCallDurations.reduce((total, duration) => total + duration, 0) /
+    recentCallDurations.length;
+
   const incomingCallRate =
     (mockData.reduce((sum, day) => sum + day.incomingCalls, 0) / totalCalls) *
     100;
 
   return (
-    <div className="min-h-screen bg-background w-full">
+    <div className="min-h-screen bg-background">
       {/* Navigation */}
       <nav className="flex items-center justify-between p-4 border-b">
         <ThemeToggle />
@@ -150,10 +110,7 @@ export default function CallLogDashboard() {
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">
-                {Math.floor(avgDuration / 60)}:
-                {(avgDuration % 60).toString().padStart(2, "0")}
-              </div>
+              <div className="text-2xl font-bold">{avgDuration.toFixed(2)}</div>
               <p className="text-xs">-5.2% from last month</p>
             </CardContent>
           </Card>
@@ -195,7 +152,7 @@ export default function CallLogDashboard() {
             <CardHeader>
               <CardTitle>Recent Calls</CardTitle>
               <CardDescription>
-                You received 265 calls this month.
+                You received {recentCalls.length} calls this month.
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -227,33 +184,6 @@ export default function CallLogDashboard() {
               </div>
             </CardContent>
           </Card>
-        </div>
-
-        {/* Top Callers Section */}
-        <div className="mt-6">
-          <h2 className="text-2xl font-semibold mb-4">Top Callers</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {topCallers.map((caller, index) => (
-              <Card key={index}>
-                <CardHeader>
-                  <CardTitle className="text-sm font-medium">
-                    {caller.name}
-                  </CardTitle>
-                  <CardDescription>{caller.number}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex justify-between items-center">
-                    <div className="text-sm">Total Calls</div>
-                    <div className="font-bold">{caller.totalCalls}</div>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <div className="text-sm">Total Duration</div>
-                    <div className="font-bold">{caller.totalDuration}</div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
         </div>
       </main>
     </div>
