@@ -1,7 +1,6 @@
 "use client";
 
-import { useState } from "react";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+
 
 export default function TabChanger() {
   const [activeTab, setActiveTab] = useState("overview");
@@ -10,7 +9,7 @@ export default function TabChanger() {
     <div className="flex justify-center items-center">
       <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full max-w-md">
         <TabsList className="grid grid-cols-4">
-          {["Overview", "Analytics", "Reports", "Notifications"].map((tab) => (
+          {["Overview", "Call Analysics", "Call Metrics", "Reports"].map((tab) => (
             <TabsTrigger
               key={tab.toLowerCase()}
               value={tab.toLowerCase()}
