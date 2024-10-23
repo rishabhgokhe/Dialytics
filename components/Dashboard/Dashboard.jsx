@@ -8,11 +8,12 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 import ThemeToggle from "@/components/Elements/themeToggle";
 import { Overview } from "./Overview";
-import { CallMetrics } from "./CallMetrics";
+import { CallMetrics } from "./CallMetrics/CallMetrics";
 import { CallAnalytics } from "./CallAnalytics";
 import { CallReports } from "./CallReports";
 
-import { BellIcon } from "lucide-react";
+import { BellIcon, DownloadIcon } from "lucide-react";
+import { DatePickerWithRange } from "../Elements/date-range-picker";
 
 export default function CallLogDashboard() {
   const [activeTab, setActiveTab] = useState("overview");
@@ -65,6 +66,18 @@ export default function CallLogDashboard() {
           </Button>
         </div>
       </nav>
+
+      {/* Header Section */}
+      <div className="flex justify-between items-center m-6">
+        <h1 className="text-3xl font-bold">{activeTab.toLowerCase().replace(/\b\w/g, (char) => char.toUpperCase())}</h1>
+        <div className="flex items-center space-x-2">
+          <DatePickerWithRange />
+          <Button variant="outline">
+            <DownloadIcon className="mr-2 h-4 w-4" />
+            Download
+          </Button>
+        </div>
+      </div>
 
       {activeTab === "overview" ? (
         <Overview />

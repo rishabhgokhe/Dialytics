@@ -1,4 +1,4 @@
-Call ID,Caller ID,Receiver ID,Call Time,Call Duration (seconds),Call Status,Call Outcome,Wait Time (seconds),Rating,Answered,Direction
+Call ID,Caller ID,Receiver ID,Call Time,Duration,Call Status,Call Outcome,Wait Time (seconds),Rating,Answered,Direction
 CALL-0001,+919639071307,+918473796108,2024-10-06 01:37:21,107,Missed,,7,,No,Incoming
 CALL-0002,+919357135779,+918277028600,2024-10-17 00:16:21,70,Completed,Unsuccessful,54,5.0,Yes,Incoming
 CALL-0003,+919816571168,+918330261059,2024-09-26 05:09:21,198,Missed,,10,,No,Outgoing

@@ -56,17 +56,6 @@ export const Overview = () => {
   return (
     <>
       <main className="p-4">
-        {/* Header Section */}
-        <div className="flex justify-between items-center mb-6">
-          <h1 className="text-3xl font-bold">Dashboard</h1>
-          <div className="flex items-center space-x-2">
-            <DatePickerWithRange />
-            <Button variant="outline">
-              <DownloadIcon className="mr-2 h-4 w-4" />
-              Download
-            </Button>
-          </div>
-        </div>
 
         {/* Statistics Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">

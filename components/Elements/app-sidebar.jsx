@@ -11,7 +11,7 @@ import {
 import { SideBarHelpItems, SideBarMainItems } from "@/Data/data";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { FilterIcon } from "lucide-react"; // Make sure to import your icons as needed
+import { FilterIcon } from "lucide-react";
 
 export function AppSidebar() {
   return (
