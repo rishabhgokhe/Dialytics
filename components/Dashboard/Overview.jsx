@@ -16,6 +16,7 @@ import CallMissed01Icon from "@/public/SVGs/CallMissed01Icon";
 import ClockIcon from "@/public/SVGs/ClockIcon";
 import StarIcon from "@/public/SVGs/StarIcon";
 import UserIcon from "@/public/SVGs/UserIcon";
+import PerformanceCard from "../Elements/PerformanceCard";
 
 export const Overview = () => {
   const [callData, setCallData] = useState([]);
@@ -149,8 +150,13 @@ export const Overview = () => {
             icon={<UserIcon />}
           />
         </div>
-        <div className="col-span-2 mx-5">
-          <LineChartGraph className="col-span-2" />
+        <div className="flex">
+        <div className="col-span-2 mx-5 w-[40vw]">
+          <LineChartGraph />
+        </div>
+        <div className="w-[33vw]">
+          <PerformanceCard/>
+        </div>
         </div>
       </main>
     </>

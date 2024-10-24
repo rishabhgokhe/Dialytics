@@ -1,7 +1,5 @@
 "use client";
 
-
-
 export default function TabChanger() {
   const [activeTab, setActiveTab] = useState("overview");
 

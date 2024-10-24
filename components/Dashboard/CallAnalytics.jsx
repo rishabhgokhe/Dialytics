@@ -33,6 +33,7 @@ import CallMissed01Icon from "@/public/SVGs/CallMissed01Icon";
 import CallMissed04Icon from "@/public/SVGs/CallMissed04Icon";
 import VoiceIcon from "@/public/SVGs/VoiceIcon";
 import CallAdd02Icon from "@/public/SVGs/CallAdd02Icon";
+import { callLogs } from "@/Data/data";
 
 export const CallAnalytics = () => {
   const [callData, setCallData] = useState([]);
@@ -253,56 +254,42 @@ export const CallAnalytics = () => {
               <div className="mb-4">
                 <Input type="search" placeholder="Search calls..." />
               </div>
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>Date/Time</TableHead>
-                    <TableHead>Agent</TableHead>
-                    <TableHead>Duration</TableHead>
-                    <TableHead>Sentiment</TableHead>
-                    <TableHead>Action</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  <TableRow>
-                    <TableCell>2023-06-15 14:30</TableCell>
-                    <TableCell>John Doe</TableCell>
-                    <TableCell>5:23</TableCell>
-                    <TableCell>Positive</TableCell>
-                    <TableCell>
-                      <Button variant="outline" size="sm">
-                        Play
-                      </Button>
-                    </TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell>2023-06-15 15:45</TableCell>
-                    <TableCell>Jane Smith</TableCell>
-                    <TableCell>3:17</TableCell>
-                    <TableCell>Neutral</TableCell>
-                    <TableCell>
-                      <Button variant="outline" size="sm">
-                        Play
-                      </Button>
-                    </TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell>2023-06-15 16:20</TableCell>
-                    <TableCell>Mike Johnson</TableCell>
-                    <TableCell>8:02</TableCell>
-                    <TableCell>Negative</TableCell>
-                    <TableCell>
-                      <Button variant="outline" size="sm">
-                        Play
-                      </Button>
-                    </TableCell>
-                  </TableRow>
-                </TableBody>
-              </Table>
+              <CallLogTable data={callLogs} />
             </CardContent>
           </Card>
         </div>
       </div>
     </main>
+  );
+};
+
+export const CallLogTable = ({ data }) => {
+  return (
+    <Table>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Date/Time</TableHead>
+          <TableHead>Agent</TableHead>
+          <TableHead>Duration</TableHead>
+          <TableHead>Sentiment</TableHead>
+          <TableHead>Action</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        {data.map((entry, index) => (
+          <TableRow key={index}>
+            <TableCell>{entry.dateTime}</TableCell>
+            <TableCell>{entry.agent}</TableCell>
+            <TableCell>{entry.duration}</TableCell>
+            <TableCell>{entry.sentiment}</TableCell>
+            <TableCell>
+              <Button variant="outline" size="sm">
+                Play
+              </Button>
+            </TableCell>
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
   );
 };

@@ -7,7 +7,7 @@ export default function page() {
   return (
     <SidebarProvider>
       <AppSidebar />
-      <SidebarTrigger />
+      <SidebarTrigger className="text-lg font-bold p-4  text-black rounded-lg bg-gray-300 mt-4 ml-3" />
       <CallLogDashboard />
     </SidebarProvider>
   );
