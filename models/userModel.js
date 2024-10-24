@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import isEmail from "validator/lib/isEmail";
+// import isEmail from "validator/lib/isEmail";
 
 const UserSchema = new mongoose.Schema({
   name: {
@@ -10,7 +10,7 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
     unique: true,
-    validate: isEmail,
+    // validate: isEmail,
   },
   password: {
     type: String,
@@ -20,22 +20,12 @@ const UserSchema = new mongoose.Schema({
   },
   role: {
     type: String,
-    default: "user",
+    default: "admin",
   },
   isActive: {
     type: Boolean,
     default: false,
-  },
-  loginAt: { type: Date },
-  logoutAt: { type: Date },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
-  updatedAt: {
-    type: Date,
-    default: Date.now,
-  },
+  }
 });
 
 const User = mongoose.models.User || mongoose.model("User", UserSchema);

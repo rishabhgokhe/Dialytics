@@ -10,12 +10,11 @@ import {
 } from "@/components/ui/card";
 import { Component } from "@/components/Elements/chart";
 
-import { DatePickerWithRange } from "../Elements/date-range-picker";
-
-import { DownloadIcon } from "lucide-react";
-import { Button } from "../ui/button";
 import { fetchCSVData } from "@/utils/fetchCSV";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { LineChartGraph } from "./CallMetrics/LineChartGraph";
+import { MetricCard } from "../Elements/MetricCard";
+import PhoneIcon from "@/public/SVGs/PhoneSquareIcon";
 
 export const Overview = () => {
   const [mockData, setMockData] = useState([]);
@@ -56,21 +55,14 @@ export const Overview = () => {
   return (
     <>
       <main className="p-4">
-
-        {/* Statistics Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
-          {/* Total Calls */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-sm font-medium">Total Calls</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{totalCalls}</div>
-              <p className="text-xs">+20.1% from last month</p>
-            </CardContent>
-          </Card>
+          <MetricCard
+            title="Total Calls"
+            value={totalCalls}
+            change="+15%"
+            icon={<PhoneIcon />}
+          />
 
-          {/* Average Call Duration */}
           <Card>
             <CardHeader>
               <CardTitle className="text-sm font-medium">
@@ -83,7 +75,6 @@ export const Overview = () => {
             </CardContent>
           </Card>
 
-          {/* Incoming Call Rate */}
           <Card>
             <CardHeader>
               <CardTitle className="text-sm font-medium">
@@ -98,7 +89,6 @@ export const Overview = () => {
             </CardContent>
           </Card>
 
-          {/* Active Now */}
           <Card>
             <CardHeader>
               <CardTitle className="text-sm font-medium">Active Now</CardTitle>
@@ -110,9 +100,11 @@ export const Overview = () => {
           </Card>
         </div>
 
-        {/* Graph and Recent Calls Section */}
+        <div className="col-span-2">
+          <LineChartGraph />
+        </div>
+
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-7">
-          {/* Call Volume Overview Chart */}
           <Card className="col-span-4">
             <CardHeader>
               <CardTitle>Overview</CardTitle>
@@ -122,7 +114,6 @@ export const Overview = () => {
             </CardContent>
           </Card>
 
-          {/* Recent Calls List */}
           <Card className="col-span-3">
             <CardHeader>
               <CardTitle>Recent Calls</CardTitle>
@@ -135,10 +126,7 @@ export const Overview = () => {
                 {recentCalls.map((call, index) => (
                   <div className="flex items-center" key={index}>
                     <Avatar className="h-9 w-9">
-                      <AvatarImage
-                        src={`/avatar.jpg`}
-                        alt={call.name}
-                      />
+                      <AvatarImage src={`/avatar.jpg`} alt={call.name} />
                       <AvatarFallback>
                         {call.name
                           .split(" ")

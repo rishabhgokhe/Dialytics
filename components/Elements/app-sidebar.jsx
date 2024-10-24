@@ -17,7 +17,6 @@ export function AppSidebar() {
   return (
     <Sidebar>
       <SidebarContent>
-        {/* Main Menu */}
         <SidebarGroup>
           <SidebarGroupLabel>Main</SidebarGroupLabel>
           <SidebarGroupContent>
@@ -36,7 +35,6 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
 
-        {/* Filters Section */}
         <SidebarGroup>
           <SidebarGroupLabel>Filters</SidebarGroupLabel>
           <SidebarGroupContent>
@@ -49,7 +47,6 @@ export function AppSidebar() {
                   </div>
                 </SidebarMenuButton>
               </SidebarMenuItem>
-              {/* Add more filter options as needed */}
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
                   <Button variant="outline" className="w-full">
@@ -61,7 +58,6 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
 
-        {/* Audio Playback Section */}
         <SidebarGroup>
           <SidebarGroupLabel>Audio Playback</SidebarGroupLabel>
           <SidebarGroupContent>
@@ -69,7 +65,7 @@ export function AppSidebar() {
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
                   <Button variant="outline" className="w-full">
-                    Play
+                    <a href="/home">Play</a>
                   </Button>
                 </SidebarMenuButton>
               </SidebarMenuItem>
@@ -87,12 +83,10 @@ export function AppSidebar() {
                   </Button>
                 </SidebarMenuButton>
               </SidebarMenuItem>
-              {/* You can add more playback controls, like skip, volume control, etc. */}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
 
-        {/* Help Section */}
         <SidebarGroup>
           <SidebarGroupLabel>Help</SidebarGroupLabel>
           <SidebarGroupContent>

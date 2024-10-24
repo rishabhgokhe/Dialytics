@@ -1,22 +1,47 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-
 import ThemeToggle from "@/components/Elements/themeToggle";
 import { Overview } from "./Overview";
 import { CallMetrics } from "./CallMetrics/CallMetrics";
 import { CallAnalytics } from "./CallAnalytics";
 import { CallReports } from "./CallReports";
-
 import { BellIcon, DownloadIcon } from "lucide-react";
 import { DatePickerWithRange } from "../Elements/date-range-picker";
 
 export default function CallLogDashboard() {
   const [activeTab, setActiveTab] = useState("overview");
+  // const router = useRouter();
+  // const [loading, setLoading] = useState(true);
+
+  // useEffect(() => {
+  //   const checkAuth = async () => {
+  //     try {
+  //       const res = await fetch("/api/auth/checkAuth");
+  //       const data = await res.json();
+
+  //       if (!data.success) {
+  //         router.push("/login"); // Redirect to login if not authenticated
+  //       } else {
+  //         setLoading(false); // User is authenticated
+  //       }
+  //     } catch (error) {
+  //       console.error("Error checking authentication:", error);
+  //       router.push("/login"); // Redirect on error
+  //     }
+  //   };
+
+  //   checkAuth();
+  // }, [router]);
+
+  // if (loading) {
+  //   return <p>Loading...</p>; // Show loading message
+  // }
 
   return (
     <div className="min-h-screen w-full">
@@ -68,7 +93,7 @@ export default function CallLogDashboard() {
       </nav>
 
       {/* Header Section */}
-      <div className="flex justify-between items-center m-6">
+      <div className="flex justify-between items-center m-6 mb-0">
         <h1 className="text-3xl font-bold">{activeTab.toLowerCase().replace(/\b\w/g, (char) => char.toUpperCase())}</h1>
         <div className="flex items-center space-x-2">
           <DatePickerWithRange />

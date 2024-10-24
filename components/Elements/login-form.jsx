@@ -12,26 +12,51 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import ThemeToggle from "./themeToggle";
+import { useRouter } from "next/navigation";
 
 export function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
+  const router = useRouter();
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setError(null);
 
-    //authentication logic
-    console.log({ email, password });
+    try {
+      const response = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await response.json();
+      const userData = data.user;
+      console.log(userData);
+      
+
+      if (data.success) {
+        router.push("/dashboard");
+      } else {
+        // Handle errors (e.g., incorrect email/password)
+        setError(data.message || "An error occurred during login");
+      }
+    } catch (err) {
+      console.error("Login error:", err);
+      setError("An error occurred during login. Please try again.");
+    }
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center">
       <div className="w-full max-w-md p-8 space-y-8">
-        <ThemeToggle/>
+        <ThemeToggle />
         <h1 className="text-center text-3xl font-bold">
           Call Log Dashboard Login
         </h1>
-        {/* Login Form Card */}
 
         <Card className="w-full">
           <CardHeader>
@@ -68,15 +93,15 @@ export function LoginForm() {
                   required
                 />
               </div>
+              {error && (
+                <p className="text-red-500 text-sm">{error}</p>
+              )}
               <Button type="submit" className="w-full">
                 Login
               </Button>
-              {/* <Button variant="outline" className="w-full">
-                Login with Google
-              </Button> */}
             </form>
             <div className="mt-4 text-center text-sm">
-              Go to Dashboard {" "}
+              Go to Dashboard{" "}
               <Link href="/dashboard" className="underline">
                 Click here
               </Link>
