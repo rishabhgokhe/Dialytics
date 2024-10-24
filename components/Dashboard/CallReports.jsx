@@ -190,7 +190,7 @@ export const CallReports = () => {
               </SelectContent>
             </Select>
           </div>
-          {/* Sentiment Filter */}
+
           <div>
             <Label htmlFor="outcome">Outcome</Label>
             <Select onValueChange={setOutcome}>
@@ -247,7 +247,7 @@ export const CallReports = () => {
                     <AvatarImage src={call["Avatar"]} />
                   </Avatar>
                   <div className="ml-3">
-                    <p className="text-sm font-medium">{call["Caller ID"]}</p>
+                    <p className="text-sm font-medium">{call["Caller Name"]}</p>
                     <p className="text-xs text-muted-foreground">
                       {call["Call Time"]}
                     </p>

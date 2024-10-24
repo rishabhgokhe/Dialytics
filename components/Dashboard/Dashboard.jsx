@@ -13,6 +13,7 @@ import { CallAnalytics } from "./CallAnalytics";
 import { CallReports } from "./CallReports";
 import { BellIcon, DownloadIcon } from "lucide-react";
 import { DatePickerWithRange } from "../Elements/date-range-picker";
+import { ToolTipIcon } from "../Elements/ToolTipIcon";
 
 export default function CallLogDashboard() {
   const [activeTab, setActiveTab] = useState("overview");
@@ -48,10 +49,15 @@ export default function CallLogDashboard() {
       {/* Navigation */}
       <nav className="flex items-center justify-between p-4 border-b">
         <div className="flex items-center space-x-4">
-          <Avatar>
-            <AvatarImage src="/avatar.png" alt="Rishabh Gokhe" />
-            <AvatarFallback>RG</AvatarFallback>
-          </Avatar>
+          <ToolTipIcon
+            name={"Profile Image"}
+            triggerJsxElement={
+              <Avatar>
+                <AvatarImage src="/avatar.png" alt="Rishabh Gokhe" />
+                <AvatarFallback>RG</AvatarFallback>
+              </Avatar>
+            }
+          />
           <span className="font-semibold">Rishabh Gokhe</span>
         </div>
 
@@ -86,15 +92,24 @@ export default function CallLogDashboard() {
 
         <div className="flex space-x-2">
           <ThemeToggle />
-          <Button variant="outline" size="icon">
-            <BellIcon className="h-5 w-5" />
-          </Button>
+          <ToolTipIcon
+            name={"Notifications"}
+            triggerJsxElement={
+              <Button variant="outline" size="icon">
+                <BellIcon className="h-5 w-5" />
+              </Button>
+            }
+          />
         </div>
       </nav>
 
       {/* Header Section */}
       <div className="flex justify-between items-center m-6 mb-0">
-        <h1 className="text-3xl font-bold">{activeTab.toLowerCase().replace(/\b\w/g, (char) => char.toUpperCase())}</h1>
+        <h1 className="text-3xl font-bold">
+          {activeTab
+            .toLowerCase()
+            .replace(/\b\w/g, (char) => char.toUpperCase())}
+        </h1>
         <div className="flex items-center space-x-2">
           <DatePickerWithRange />
           <Button variant="outline">

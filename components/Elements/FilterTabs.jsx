@@ -17,7 +17,8 @@ export default function FilterTabs({ selectedFilters, setSelectedFilters }) {
   };
 
   return (
-    <div className="flex flex-wrap gap-2 mb-4">
+    <div className="flex flex-wrap gap-2 m-4 items-center">
+      <p>Filter Options: </p>
       <FilterButton
         value="Incoming"
         label="Incoming Calls"

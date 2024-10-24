@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import { Button } from "../ui/button";
 import { SunDimIcon, MoonIcon } from "lucide-react";
+import { ToolTipIcon } from "./ToolTipIcon";
 
 const ThemeToggle = () => {
   const { theme, setTheme } = useTheme();
@@ -25,14 +26,19 @@ const ThemeToggle = () => {
   };
 
   return (
-    <Button
-      variant="outline"
-      size="icon"
-      className="ml-2 h-8 w-8"
-      onClick={toggleTheme}
-    >
-      {icon}
-    </Button>
+    <ToolTipIcon
+      name={"Switch themes"}
+      triggerJsxElement={
+        <Button
+          variant="outline"
+          size="icon"
+          className="ml-2 h-8 w-8"
+          onClick={toggleTheme}
+        >
+          {icon}
+        </Button>
+      }
+    />
   );
 };
 

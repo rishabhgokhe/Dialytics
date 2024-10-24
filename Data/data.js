@@ -1,20 +1,35 @@
-import { Calendar, Home, icons, Inbox, Search, Settings, HelpCircleIcon } from "lucide-react";
+import {
+  Calendar,
+  Home,
+  icons,
+  Inbox,
+  Search,
+  Settings,
+  HelpCircleIcon,
+  GitGraph,
+  NotebookTabsIcon,
+} from "lucide-react";
 
 export const SideBarMainItems = [
   {
-    title: "Home",
-    url: "#",
+    title: "Overview",
+    url: "/dashboard",
     icon: Home,
   },
   {
-    title: "Inbox",
-    url: "#",
-    icon: Inbox,
-  },
-  {
-    title: "Calendar",
+    title: "Analytics",
     url: "#",
     icon: Calendar,
+  },
+  {
+    title: "Metrics",
+    url: "/metrics",
+    icon: GitGraph,
+  },
+  {
+    title: "Report",
+    url: "/report",
+    icon: NotebookTabsIcon,
   },
   {
     title: "Search",
@@ -26,7 +41,12 @@ export const SideBarHelpItems = [
   {
     title: "Help Center",
     url: "#",
-    icon: HelpCircleIcon
+    icon: HelpCircleIcon,
+  },
+  {
+    title: "Logout",
+    url: "/",
+    icon: Inbox,
   },
   {
     title: "Settings",

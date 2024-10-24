@@ -36,29 +36,6 @@ export function AppSidebar() {
         </SidebarGroup>
 
         <SidebarGroup>
-          <SidebarGroupLabel>Filters</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              <SidebarMenuItem>
-                <SidebarMenuButton asChild>
-                  <div className="flex items-center space-x-2">
-                    <FilterIcon className="h-5 w-5" />
-                    <Input placeholder="Search..." className="w-full" />
-                  </div>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-              <SidebarMenuItem>
-                <SidebarMenuButton asChild>
-                  <Button variant="outline" className="w-full">
-                    Apply Filters
-                  </Button>
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-
-        <SidebarGroup>
           <SidebarGroupLabel>Audio Playback</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
