@@ -1,5 +1,7 @@
 "use client";
 
+import { Tabs, TabsList, TabsTrigger } from "../ui/tabs";
+
 export default function TabChanger() {
   const [activeTab, setActiveTab] = useState("overview");
 
