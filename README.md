@@ -146,9 +146,11 @@ Contributions are welcome! Please follow these steps to contribute:
 6. Create a new Pull Request.
 <!-- contribution-guidelines.md-end -->
 
+<!-- author.md-start -->
 ## 👨🏻‍💻 Authors
 
 - [Rishabh Gokhe (A Computer Science Student)](https://www.github.com/rishabhgokhe)
+<!-- author.md-end -->
 
 ## 🚀 About Me
 
@@ -160,9 +162,11 @@ Feel free to reach out if you have any questions, suggestions, or just want to c
 
 ByteChat was created with the vision of providing a fast, secure, and interactive chatting experience. I believe real-time communication should be smooth, efficient, and accessible to everyone. This project is a step towards building a better way to connect and communicate online.
 
+<!-- feedback.md-start -->
 ## 📨 Feedback
 
 Got feedback, suggestions, or ideas? Feel free to reach out! [![Email Me](https://img.shields.io/badge/Email-Me-black?style=flat&logo=gmail&logoColor=white)](mailto:rishabhgokhe20contact@gmail.com)
+<!-- feedback.md-end -->
 
 <!-- connect-with-me.md-start -->
 ## <img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExeWxuNTJlaTIwcWp6Mmx4ODl5dXgxbThqNnI5eWh3YmIwMnZhbWp5MyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/7NgYelDPXmzbzxrKsj/giphy.gif" width=40px /> Connect with Me
